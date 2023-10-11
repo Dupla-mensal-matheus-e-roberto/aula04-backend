@@ -48,10 +48,10 @@ public class PessoaController {
 		}
 	}
 
-	@DeleteMapping
-	private ResponseEntity<String> delete(@PathVariable Long id){
+	@DeleteMapping("/{id}")
+	private ResponseEntity<PessoaDTO> delete(@PathVariable Long id){
 		try{
-			String pessoaDeletar = pessoaService.delete(id);
+			PessoaDTO pessoaDeletar = pessoaService.delete(id);
 			return new ResponseEntity<>(pessoaDeletar, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

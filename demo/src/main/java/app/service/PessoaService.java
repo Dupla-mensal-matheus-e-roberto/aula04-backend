@@ -48,12 +48,12 @@ public class PessoaService {
 		return this.toPessoaDTO(pessoaeditada);
 	}
 
-	public String delete(Long id){
+	public PessoaDTO delete(Long id){
 		Pessoa pessoasalva = pessoaRepository.findById(id).orElse(null);
 
 		this.pessoaRepository.delete(pessoasalva);
 
-		return "Pessoa deletada com sucesso";
+		return this.toPessoaDTO(pessoasalva);
 	}
 
 	private PessoaDTO toPessoaDTO(Pessoa pessoa) {

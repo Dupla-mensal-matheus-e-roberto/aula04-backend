@@ -1,6 +1,7 @@
 package app.service;
 
 import app.dto.CarroDTO;
+import app.dto.PessoaDTO;
 import app.entity.Carro;
 import app.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,12 +48,12 @@ public class CarroService {
         return this.toCarroDTO(carroeditado);
     }
 
-    public String delete(Long id){
+    public CarroDTO delete(Long id){
         Carro carrosalvo = carroRepository.findById(id).orElse(null);
 
         this.carroRepository.delete(carrosalvo);
 
-        return "Carro deletado com sucesso";
+        return this.toCarroDTO(carrosalvo);
     }
 
     private CarroDTO toCarroDTO(Carro carro){

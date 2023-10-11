@@ -47,10 +47,10 @@ public class CarroController {
         }
     }
 
-    @DeleteMapping
-    private ResponseEntity<String> delete(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    private ResponseEntity<CarroDTO> delete(@PathVariable Long id){
         try{
-            String carroDeletar = carroService.delete(id);
+            CarroDTO carroDeletar = carroService.delete(id);
             return new ResponseEntity<>(carroDeletar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
