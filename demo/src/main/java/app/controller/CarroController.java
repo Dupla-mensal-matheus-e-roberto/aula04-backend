@@ -37,8 +37,8 @@ public class CarroController {
         }
     }
 
-    @PutMapping
-    private ResponseEntity<CarroDTO> update(@RequestBody CarroDTO carroDTO, @RequestParam Long id){
+    @PutMapping("/{id}")
+    private ResponseEntity<CarroDTO> update(@RequestBody CarroDTO carroDTO, @PathVariable Long id){
         try{
             CarroDTO carroEditar = carroService.update(carroDTO, id);
             return new ResponseEntity<>(carroEditar, HttpStatus.OK);
@@ -48,7 +48,7 @@ public class CarroController {
     }
 
     @DeleteMapping
-    private ResponseEntity<String> delete(@RequestParam Long id){
+    private ResponseEntity<String> delete(@PathVariable Long id){
         try{
             String carroDeletar = carroService.delete(id);
             return new ResponseEntity<>(carroDeletar, HttpStatus.OK);

@@ -51,8 +51,6 @@ public class PessoaService {
 	public String delete(Long id){
 		Pessoa pessoasalva = pessoaRepository.findById(id).orElse(null);
 
-		Assert.isTrue(pessoasalva != null, "Pessoa inválida");
-
 		this.pessoaRepository.delete(pessoasalva);
 
 		return "Pessoa deletada com sucesso";

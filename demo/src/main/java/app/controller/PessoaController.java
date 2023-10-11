@@ -38,8 +38,8 @@ public class PessoaController {
 		}
 	}
 
-	@PutMapping
-	private ResponseEntity<PessoaDTO> update(@RequestBody PessoaDTO pessoaDTO, @RequestParam Long id){
+	@PutMapping("/{id}")
+	private ResponseEntity<PessoaDTO> update(@RequestBody PessoaDTO pessoaDTO, @PathVariable Long id){
 		try{
 			PessoaDTO pessoaEditar = pessoaService.update(pessoaDTO, id);
 			return new ResponseEntity<>(pessoaEditar, HttpStatus.OK);
@@ -49,7 +49,7 @@ public class PessoaController {
 	}
 
 	@DeleteMapping
-	private ResponseEntity<String> delete(@RequestParam Long id){
+	private ResponseEntity<String> delete(@PathVariable Long id){
 		try{
 			String pessoaDeletar = pessoaService.delete(id);
 			return new ResponseEntity<>(pessoaDeletar, HttpStatus.OK);

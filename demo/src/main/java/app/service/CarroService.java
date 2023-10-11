@@ -4,11 +4,13 @@ import app.dto.CarroDTO;
 import app.entity.Carro;
 import app.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CarroService {
 
     @Autowired
@@ -47,8 +49,6 @@ public class CarroService {
 
     public String delete(Long id){
         Carro carrosalvo = carroRepository.findById(id).orElse(null);
-
-        Assert.isTrue(carrosalvo != null, "Carro inválido");
 
         this.carroRepository.delete(carrosalvo);
 
