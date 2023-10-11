@@ -28,7 +28,10 @@ public class LivroService {
 
     public LivroDTO save(LivroDTO livroDTO) {
         Livro livro = this.toLivro(livroDTO);
-        return this.toLivroDTO(livroRepository.save(livro));
+
+        Livro livrosalvo = livroRepository.save(livro);
+
+        return this.toLivroDTO(livrosalvo);
     }
 
     public LivroDTO update(LivroDTO livroDTO, Long id){
